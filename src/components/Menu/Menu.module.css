@@ -52,7 +52,7 @@
     /* margin-left: 85px !important ;*/
     display: flex;
     flex-direction: column;
-    align-items: center !important;
+    align-items: left !important;
   }
   .title {
     font-size: 25px !important;
