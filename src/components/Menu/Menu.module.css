@@ -36,7 +36,7 @@
 }
 @media (max-width: 970px) {
   .card {
-    width: 425px; /*500px !important;*/
+    width: 405px; /*500px !important;*/
     height: 185px;
     display: flex;
     flex-direction: row;
