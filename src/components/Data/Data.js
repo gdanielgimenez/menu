@@ -1,0 +1,66 @@
+const Menu = [
+    {id:1,
+        title:'Murica',
+        category:'lunch',
+        price:5.99,
+        img:'./images/burguer-1.jpeg',
+        desc:'beef bacon cheese tomatoes eggs'
+    },
+    {id:2,
+        title:'Double dragon',
+        category:'lunch',
+        price:3.99,
+        img:'./images/burguer-3.jpeg',
+        desc:'double cheese & beef with bacon'
+    },
+    {id:3,
+        title:'Morning glory',
+        category:'breakfast',
+        price:2.99,
+        img:'./images/breakfast-1.jpeg',
+        desc:'coffee toasts orange juice'
+    },
+    {id:4,
+        title:'hallelujah',
+        category:'breakfast',
+        price:3.99,
+        img:'./images/breakfast-2.jpeg',
+        desc:'black coffee chips & sandwhich'
+    },
+    {id:5,
+        title:'Honey badge',
+        category:'breakfast',
+        price:3.99,
+        img:'./images/pancake.jpeg',
+        desc:'pancake honey berries and bananas'
+    },
+    {id:6,
+        title:'The choco-loco',
+        category:'shakes',
+        price:7.99,
+        img:'./images/milkshake-2.jpeg',
+        desc:'chocolate milkshake'
+    },
+    {id:7,
+        title:'The Oh-reo Boi',
+        category:'shakes',
+        price:4.99,
+        img:'./images/milkshake-7.jpeg',
+        desc:'chocolate mikshake with oreos'
+    },
+    {id:8,
+        title:'The classic',
+        category:'shakes',
+        price:2.99,
+        img:'./images/milkshake-5.jpeg',
+        desc:'vanilla milshake'
+    },
+    {id:9,
+        title:'Eiffel tower',
+        category:'breakfast',
+        price:2.99,
+        img:'./images/pancakes-2.jpeg',
+        desc:'pancake wiht extra honey'
+    },
+]
+ export default Menu;
