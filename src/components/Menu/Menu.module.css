@@ -65,12 +65,12 @@
 }
 @media (max-width: 440px) {
   .title {
-    font-size: 20px !important;
+    font-size: 18px !important;
   }
   .price {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
   .desc {
-    font-size: 10px !important;
+    font-size: 8px !important;
   }
 }
