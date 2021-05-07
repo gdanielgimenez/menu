@@ -35,14 +35,12 @@
 
 @media (max-width: 970px) {
   .card {
-    width: 400cpx; /*500px !important;*/
-    height: 185px;
-    display: flex;
-    flex-direction: row;
+    width: 400px !important; /*400px; */
+    height: 210px !important; /* 185px */
   }
   .media {
-    height: 205px !important;
-    width: 175px !important;
+    height: 100% !important; /*205px !important;*/
+    width: 160px !important; /*175px !important;*/
     object-fit: cover !important;
     object-position: center !important;
     border: hidden;
@@ -54,7 +52,7 @@
     align-items: center !important;
   }
   .title {
-    font-size: 25px !important;
+    font-size: 20px !important;
   }
   .price {
     font-size: 18px !important;
@@ -72,5 +70,23 @@
   }
   .desc {
     font-size: 8px !important;
+  }
+  .card {
+    width: 320px !important;
+    height: 150px !important;
+    display: flex;
+    flex-direction: row;
+  }
+  .media {
+    height: 185px !important;
+    width: 155px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border: hidden;
+  }
+  .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 }

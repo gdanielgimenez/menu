@@ -6,3 +6,8 @@
     font-size: 18px !important;
   }
 }
+@media (max-width: 440px) {
+  .buttons {
+    font-size: 14px !important;
+  }
+}
