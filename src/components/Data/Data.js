@@ -18,7 +18,7 @@ const Menu = [
         category:'breakfast',
         price:2.99,
         img:'./images/breakfast-1.jpeg',
-        desc:'coffee toasts orange juice'
+        desc:'coffee toasts orange strawberry'
     },
     {id:4,
         title:'hallelujah',
@@ -32,14 +32,14 @@ const Menu = [
         category:'breakfast',
         price:3.99,
         img:'./images/pancake.jpeg',
-        desc:'pancake honey berries and bananas'
+        desc:'pancake honey berries bananas'
     },
     {id:6,
         title:'The choco-loco',
         category:'shakes',
         price:7.99,
         img:'./images/milkshake-2.jpeg',
-        desc:'chocolate milkshake'
+        desc:'chocolate milkshake cinnamon'
     },
     {id:7,
         title:'The Oh-reo Boi',
@@ -53,14 +53,14 @@ const Menu = [
         category:'shakes',
         price:2.99,
         img:'./images/milkshake-5.jpeg',
-        desc:'vanilla milshake'
+        desc:'vanilla milshake with cherries'
     },
     {id:9,
         title:'Eiffel tower',
         category:'breakfast',
         price:2.99,
         img:'./images/pancakes-2.jpeg',
-        desc:'pancake wiht extra honey'
+        desc:'pancake tower & extra honey'
     },
 ]
  export default Menu;

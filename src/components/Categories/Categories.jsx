@@ -9,8 +9,8 @@ const menuButtons = categories.map((category,index)=>{
 })
 
     return(
-        <Container align="center">
-        <ButtonGroup  variant="text">
+        <Container  align="center">
+        <ButtonGroup   variant="text">
             {menuButtons}
         </ButtonGroup>
         </Container>
