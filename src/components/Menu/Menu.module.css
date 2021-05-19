@@ -32,8 +32,12 @@
   color: green;
   font-size: 35px !important;
 }
-
-@media (max-width: 970px) {
+.add {
+  margin-top: 25px !important;
+  /*margin-left: 285px !important;*/
+  margin-left: 100% !important;
+}
+@media (max-width: 1120px) {
   .card {
     width: 400px !important; /*400px; */
     height: 210px !important; /* 185px */
@@ -59,6 +63,11 @@
   }
   .desc {
     font-size: 14px !important;
+  }
+  .add {
+    margin-top: 15px !important;
+    /*margin-left: 285px !important;*/
+    margin-left: 70% !important;
   }
 }
 @media (max-width: 440px) {
@@ -88,5 +97,10 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+  }
+  .add {
+    margin-top: 5px !important;
+    /*margin-left: 285px !important;*/
+    margin-left: 70% !important;
   }
 }

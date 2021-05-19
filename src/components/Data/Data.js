@@ -28,39 +28,18 @@ const Menu = [
         desc:'black coffee chips & sandwhich'
     },
     {id:5,
-        title:'Honey badge',
-        category:'breakfast',
-        price:3.99,
-        img:'./images/pancake.jpeg',
-        desc:'pancake honey berries bananas'
-    },
-    {id:6,
         title:'The choco-loco',
         category:'shakes',
         price:7.99,
         img:'./images/milkshake-2.jpeg',
         desc:'chocolate milkshake cinnamon'
     },
-    {id:7,
+    {id:6,
         title:'The Oh-reo Boi',
         category:'shakes',
         price:4.99,
         img:'./images/milkshake-7.jpeg',
         desc:'chocolate mikshake with oreos'
-    },
-    {id:8,
-        title:'The classic',
-        category:'shakes',
-        price:2.99,
-        img:'./images/milkshake-5.jpeg',
-        desc:'vanilla milshake with cherries'
-    },
-    {id:9,
-        title:'Eiffel tower',
-        category:'breakfast',
-        price:2.99,
-        img:'./images/pancakes-2.jpeg',
-        desc:'pancake tower & extra honey'
     },
 ]
  export default Menu;

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Items, Menu,Categories } from './components';
+import { Items, Menu,Categories,Cart } from './components';
 import styles from './App.module.css';
 import {Container, Typography, ThemeProvider} from '@material-ui/core';
 import Theme from './Theme';
@@ -23,6 +23,7 @@ function App() {
   return (
     <ThemeProvider theme={Theme}>
     <Container>
+      <Cart />
       <Typography align="center" variant="h2" className={styles.title}  color="primary"> Al's dinner menu</Typography>
       <Categories categories={categories} filterItems={filterItems}/>
       <Menu  items={menuItems}/>
