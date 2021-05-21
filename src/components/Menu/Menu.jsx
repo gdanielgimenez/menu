@@ -1,11 +1,21 @@
 import React from 'react'
-import { Card,CardActions,CardContent,CardHeader,CardMedia,Container,Grid, IconButton, Typography } from '@material-ui/core';
+import { Card,CardActions,CardContent,Grid, IconButton, Typography } from '@material-ui/core';
 import styles from './Menu.module.css';
 import AddShoppingCartRoundedIcon from '@material-ui/icons/AddShoppingCartRounded';
 
 //                  <div className={styles.container}>   
-const Menu = ({items}) => {
+const Menu = ({ items , addToCart,addToCartTwo, cartItems, changuitoExpress}) => {
 
+const addItem = (itm)=>{
+    let shortItem = itm
+    cartItems.length ? (
+        changuitoExpress(shortItem)
+    ): 
+    (
+        addToCart(shortItem)
+    )
+       // console.log(cartItems);
+}    
     const MenuItems = 
         items.map((item) => {
             const {id,title,img, category, desc,price} = item;
@@ -23,7 +33,7 @@ const Menu = ({items}) => {
                           <Typography variant="h6" className={styles.title}> {title}</Typography>
                             <Typography className={styles.price}>  {price} $</Typography>
                             <Typography className={styles.desc} paragraph color="textSecondary">{desc}</Typography>
-                            <IconButton className={styles.add}>
+                            <IconButton className={styles.add} onClick={()=>{addItem(item.title)}}>
                                 <AddShoppingCartRoundedIcon fontSize="large" color="primary"></AddShoppingCartRoundedIcon>
                             </IconButton>
                           </CardContent>

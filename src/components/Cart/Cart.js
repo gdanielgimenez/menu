@@ -1,4 +1,4 @@
-import React from 'react';
+import  React, { useState } from 'react';
 import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
 import { Button, IconButton } from '@material-ui/core';
 import styles from './Cart.module.css';
@@ -13,7 +13,6 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const drawerWidth = 240;
@@ -76,17 +75,41 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Cart = () =>{
+const Cart = ({ items, cartItems }) =>{
 //drawer--
 
 const classes = useStyles();
 const theme = useTheme();
 const [open, setOpen] = React.useState(false);
-
+const [totalPrice, setTotalPrice] = useState();
 const handleDrawer = () =>{
     setOpen(!open)
 }
+let sum=0;
+/*const Bill = cartItems.length ? (
+  cartItems.forEach(item =>{
+   sum = sum +item.price
+  }),
+  console.log(sum)
+):(null)*/
 
+
+const Cart = cartItems.length ?( 
+    new Set(cartItems.map(item =>{
+      return(
+          <div >
+            <ListItem key={item.id}>
+              <ListItemText>{item.title} </ListItemText>
+              <ListItemText> {item.price}</ListItemText>
+            </ListItem>
+          </div>
+        )
+    }) 
+))
+:(<Typography variant="caption" color="textSecondary" align="center"> empty </Typography>)
+
+
+//----------------------------------
     return(  
     <div className={styles.container}>
         <IconButton className={styles.button} color="primary" onClick={handleDrawer}>
@@ -106,12 +129,12 @@ const handleDrawer = () =>{
         </div>
         <Divider />
         <List>
-          <p>List of elements</p>
+          { Cart }
         </List>
         <Divider />
         <List>
           <h1>sub-total</h1>
-          <h1>total</h1>
+          <h1>total :  </h1>
           <Button variant="contained" fullWidth={true} color="secondary"> checkout</Button>
         </List>
       </Drawer>
