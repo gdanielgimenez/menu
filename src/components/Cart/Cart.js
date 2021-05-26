@@ -2,7 +2,8 @@ import  React, { useState } from 'react';
 import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
 import { Button, IconButton } from '@material-ui/core';
 import styles from './Cart.module.css';
-
+import AddCircleOutlineRoundedIcon from '@material-ui/icons/AddCircleOutlineRounded';
+import RemoveCircleOutlineRoundedIcon from '@material-ui/icons/RemoveCircleOutlineRounded';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -14,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+
 
 const drawerWidth = 240;
 
@@ -75,8 +77,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Cart = ({ items, cartItems }) =>{
-//drawer--
+const Cart = ({ cartItems, changuitoExpress,takeItems }) =>{
+//drawer-----------------------------------------------------------
 
 const classes = useStyles();
 const theme = useTheme();
@@ -85,36 +87,64 @@ const [totalPrice, setTotalPrice] = useState();
 const handleDrawer = () =>{
     setOpen(!open)
 }
-let sum=0;
-/*const Bill = cartItems.length ? (
-  cartItems.forEach(item =>{
-   sum = sum +item.price
-  }),
-  console.log(sum)
-):(null)*/
 
+const pricesList = cartItems.reduce((sum,item) => sum+item.cartPrice,0)
+                    
+const total = ()=>{ 
+  if(pricesList){
+  setTotalPrice(pricesList)
+  }
+}                
 
+ const minus = (id)=> {
+    cartItems.forEach(item =>{
+        if(item.id === id){
+            return  console.log(item),
+            item.cartPrice -= item.price,
+            item.qty -=1,
+            console.log(item.cartPrice+" "+item.qty)
+            }
+        });
+   const minusList = [...cartItems]
+   takeItems(minusList);
+ }
+ const checkout = ()=>{
+   alert("thanks for your purchase!");
+   window.location.reload();
+    
+ }
+ //----------
 const Cart = cartItems.length ?( 
     new Set(cartItems.map(item =>{
       return(
-          <div >
-            <ListItem key={item.id}>
-              <ListItemText>{item.title} </ListItemText>
-              <ListItemText> {item.price}</ListItemText>
-            </ListItem>
-          </div>
-        )
-    }) 
-))
-:(<Typography variant="caption" color="textSecondary" align="center"> empty </Typography>)
-
-
+              <div >
+                <ListItem  key={item.id}>
+                  <ListItemText align="left" > <Typography variant="caption">{item.title}</Typography> </ListItemText>
+                  <IconButton fontSize="small" onClick={()=>minus(item.id)}> <RemoveCircleOutlineRoundedIcon /> </IconButton>
+                    <Typography> {item.qty} </Typography>
+                  <IconButton fontSize="small"  onClick={()=>changuitoExpress(item.title)}>< AddCircleOutlineRoundedIcon /></IconButton>
+                </ListItem>
+                <ListItem> 
+                  <ListItemText align="right"> <Typography color="primary" variant="body2"> { (item.cartPrice = item.price*item.qty).toFixed(2)} $ </Typography> </ListItemText>
+                </ListItem>
+              </div>
+            )
+          }) 
+        ))
+        :(<div align="center"><Typography variant="subtitle1" color="textSecondary"> empty cart </Typography> </div>)
+//
+//</IconButton>
 //----------------------------------
     return(  
+    
     <div className={styles.container}>
-        <IconButton className={styles.button} color="primary" onClick={handleDrawer}>
-            <ShoppingCartRoundedIcon fontSize="large"></ShoppingCartRoundedIcon>
-        </IconButton>
+        <AppBar className={styles.nav}>
+          <Toolbar>
+            <IconButton  className={styles.button} onClick={handleDrawer} >
+                <ShoppingCartRoundedIcon  fontSize="default"></ShoppingCartRoundedIcon>
+            </IconButton>
+            </Toolbar>
+        </AppBar>
         <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -124,8 +154,10 @@ const Cart = cartItems.length ?(
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.drawerHeader}>
-          <Typography variant="h5" align="center" color="primary">items on your order</Typography>
+        <div  className={classes.drawerHeader}>
+          <ListItem align="center">
+            <Typography variant="h6"  color="primary">items in your cart</Typography>
+          </ListItem>
         </div>
         <Divider />
         <List>
@@ -133,9 +165,10 @@ const Cart = cartItems.length ?(
         </List>
         <Divider />
         <List>
-          <h1>sub-total</h1>
-          <h1>total :  </h1>
-          <Button variant="contained" fullWidth={true} color="secondary"> checkout</Button>
+          <ListItemText align="center"> 
+             <Typography variant="h6">Total : {pricesList.toFixed(2)} $ </Typography>
+          </ListItemText>
+          <Button variant="contained" fullWidth={true} color="secondary" onClick={checkout}> checkout</Button>
         </List>
       </Drawer>
     </div>

@@ -3,8 +3,8 @@ import { Card,CardActions,CardContent,Grid, IconButton, Typography } from '@mate
 import styles from './Menu.module.css';
 import AddShoppingCartRoundedIcon from '@material-ui/icons/AddShoppingCartRounded';
 
-//                  <div className={styles.container}>   
-const Menu = ({ items , addToCart,addToCartTwo, cartItems, changuitoExpress}) => {
+//   
+const Menu = ({ items , addToCart, cartItems, changuitoExpress}) => {
 
 const addItem = (itm)=>{
     let shortItem = itm
@@ -14,7 +14,6 @@ const addItem = (itm)=>{
     (
         addToCart(shortItem)
     )
-       // console.log(cartItems);
 }    
     const MenuItems = 
         items.map((item) => {

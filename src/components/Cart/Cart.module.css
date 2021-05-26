@@ -1,2 +1,7 @@
-.container {
+.button {
+  align-self: left;
+  color: snow !important;
+}
+.nav {
+  height: 60px !important;
 }
