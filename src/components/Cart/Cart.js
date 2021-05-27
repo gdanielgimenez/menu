@@ -77,32 +77,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Cart = ({ cartItems, changuitoExpress,takeItems }) =>{
+const Cart = ({ cartItems, changuitoExpress,takeItems,total,totalPrice }) =>{
 //drawer-----------------------------------------------------------
 
 const classes = useStyles();
 const theme = useTheme();
 const [open, setOpen] = React.useState(false);
-const [totalPrice, setTotalPrice] = useState();
 const handleDrawer = () =>{
     setOpen(!open)
 }
 
 const pricesList = cartItems.reduce((sum,item) => sum+item.cartPrice,0)
-                    
-const total = ()=>{ 
-  if(pricesList){
-  setTotalPrice(pricesList)
-  }
-}                
-
+totalPrice(pricesList.toFixed(2))
+             
  const minus = (id)=> {
     cartItems.forEach(item =>{
         if(item.id === id){
-            return  console.log(item),
-            item.cartPrice -= item.price,
-            item.qty -=1,
-            console.log(item.cartPrice+" "+item.qty)
+            return item.cartPrice -= item.price,
+            item.qty -=1
             }
         });
    const minusList = [...cartItems]
@@ -111,9 +103,8 @@ const total = ()=>{
  const checkout = ()=>{
    alert("thanks for your purchase!");
    window.location.reload();
-    
  }
- //----------
+
 const Cart = cartItems.length ?( 
     new Set(cartItems.map(item =>{
       return(
@@ -122,7 +113,7 @@ const Cart = cartItems.length ?(
                   <ListItemText align="left" > <Typography variant="caption">{item.title}</Typography> </ListItemText>
                   <IconButton fontSize="small" onClick={()=>minus(item.id)}> <RemoveCircleOutlineRoundedIcon /> </IconButton>
                     <Typography> {item.qty} </Typography>
-                  <IconButton fontSize="small"  onClick={()=>changuitoExpress(item.title)}>< AddCircleOutlineRoundedIcon /></IconButton>
+                  <IconButton fontSize="small"  onClick={()=>changuitoExpress(item.title) }>< AddCircleOutlineRoundedIcon /></IconButton>
                 </ListItem>
                 <ListItem> 
                   <ListItemText align="right"> <Typography color="primary" variant="body2"> { (item.cartPrice = item.price*item.qty).toFixed(2)} $ </Typography> </ListItemText>
@@ -133,7 +124,7 @@ const Cart = cartItems.length ?(
         ))
         :(<div align="center"><Typography variant="subtitle1" color="textSecondary"> empty cart </Typography> </div>)
 //
-//</IconButton>
+//
 //----------------------------------
     return(  
     
@@ -166,7 +157,7 @@ const Cart = cartItems.length ?(
         <Divider />
         <List>
           <ListItemText align="center"> 
-             <Typography variant="h6">Total : {pricesList.toFixed(2)} $ </Typography>
+             <Typography variant="h6">Total :  {total} $ </Typography>
           </ListItemText>
           <Button variant="contained" fullWidth={true} color="secondary" onClick={checkout}> checkout</Button>
         </List>

@@ -4,17 +4,14 @@ import styles from './Menu.module.css';
 import AddShoppingCartRoundedIcon from '@material-ui/icons/AddShoppingCartRounded';
 
 //   
-const Menu = ({ items , addToCart, cartItems, changuitoExpress}) => {
+const Menu = ({ items , addToCart, cartItems, changuitoExpress }) => {
 
-const addItem = (itm)=>{
+    const addItem = (itm)=>{
     let shortItem = itm
-    cartItems.length ? (
-        changuitoExpress(shortItem)
-    ): 
-    (
-        addToCart(shortItem)
-    )
-}    
+    cartItems.length? (
+        changuitoExpress(shortItem))
+        :(addToCart(shortItem))
+    }    
     const MenuItems = 
         items.map((item) => {
             const {id,title,img, category, desc,price} = item;
