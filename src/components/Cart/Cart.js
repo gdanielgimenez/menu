@@ -98,11 +98,17 @@ totalPrice(pricesList.toFixed(2))
             }
         });
    const minusList = [...cartItems]
-   takeItems(minusList);
+   takeItems(minusList)
+   checkout()
  }
  
  const checkout = () =>{
-   document.getElementById("tot").innerHTML=`total : ${total} $` ;
+   document.getElementById("tot").innerHTML=`total : ${cartItems.reduce((sum,item) => sum+item.cartPrice,0).toFixed(2)} $` ;
+ }
+
+ const plus = (title) =>{
+  return changuitoExpress(title)
+  //document.getElementById("tot").innerHTML=`total : ${cartItems.reduce((sum,item) => sum+item.cartPrice,0).toFixed(2)} $`;
  }
 
 const Cart = cartItems.length ?( 
@@ -113,7 +119,7 @@ const Cart = cartItems.length ?(
                   <ListItemText align="left" > <Typography variant="caption">{item.title}</Typography> </ListItemText>
                   <IconButton fontSize="small" onClick={()=>minus(item.id)}> <RemoveCircleOutlineRoundedIcon /> </IconButton>
                     <Typography> {item.qty} </Typography>
-                  <IconButton fontSize="small"  onClick={()=>changuitoExpress(item.title) }>< AddCircleOutlineRoundedIcon /></IconButton>
+                  <IconButton fontSize="small"  onClick={()=>plus(item.title) }>< AddCircleOutlineRoundedIcon /></IconButton>
                 </ListItem>
                 <ListItem> 
                   <ListItemText align="right"> <Typography color="primary" variant="body2"> { (item.cartPrice = item.price*item.qty).toFixed(2)} $ </Typography> </ListItemText>

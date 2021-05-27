@@ -25,28 +25,29 @@ function App() {
   }
   //function to add items to cart if cart isn't empty anymore
   const changuitoExpress = (itm) =>{
-    let changuito = cartItems.map(item => item.title);
+    let changuito = cartItems.map(item => item.title)
     let itemenu = Items.filter((it,i) =>{
-      if(it.title === itm){
-        return it.title,
-      it.qty+=1}
-      }) 
+                  if(it.title === itm){
+                  return it.title,
+                  it.qty+=1}
+                  }) 
     changuito.push(itemenu.[0].title)
     changuito = [... new Set(changuito.map(item => item))]
-    let position=0;
-    let cartItem;
-    let lista =[];
+    let position=0
+    let cartItem
+    let lista =[]
     const shoppingCart = Items.map(( item ,i ) => {
-            return position = i,
-            cartItem = item,
-          changuito.forEach(changui =>{
-            if(Items.[position].title === changui){
-            return lista.push(Items.[position])
-            }    
-          });  
-        });
+                        return position = i,
+                        cartItem = item,
+                          changuito.forEach(changui =>{
+                              if(Items.[position].title === changui){
+                                  return lista.push(Items.[position])
+                              }    
+                          });  
+          });
         setCartItems(lista)
   };
+  
   //add items to cart when cart it is empty----
   const addToCart = (itm) =>{
       let itemenu = Items.filter((it,i) =>{
