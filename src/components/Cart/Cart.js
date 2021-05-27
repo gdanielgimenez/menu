@@ -100,9 +100,9 @@ totalPrice(pricesList.toFixed(2))
    const minusList = [...cartItems]
    takeItems(minusList);
  }
- const checkout = ()=>{
-   alert("thanks for your purchase!");
-   window.location.reload();
+ 
+ const checkout = () =>{
+   document.getElementById("tot").innerHTML=`total : ${total} $` ;
  }
 
 const Cart = cartItems.length ?( 
@@ -157,9 +157,9 @@ const Cart = cartItems.length ?(
         <Divider />
         <List>
           <ListItemText align="center"> 
-             <Typography variant="h6">Total :  {total} $ </Typography>
+             <Typography id="tot" variant="h6">Total : $ </Typography>
           </ListItemText>
-          <Button variant="contained" fullWidth={true} color="secondary" onClick={checkout}> checkout</Button>
+          <Button variant="contained" fullWidth={true} color="secondary" onClick={()=>{checkout()}}> checkout</Button>
         </List>
       </Drawer>
     </div>
