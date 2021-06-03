@@ -17,6 +17,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 
+import { useSelector, useDispatch} from 'react-redux';
+import { increment } from '../../actions';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -78,8 +81,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Cart = ({ cartItems, changuitoExpress,takeItems,total,totalPrice }) =>{
-//drawer-----------------------------------------------------------
-
+  const counter = useSelector(state=> state);
+  const dispatch = useDispatch();
+  //drawer-----------------------------------------------------------
 const classes = useStyles();
 const theme = useTheme();
 const [open, setOpen] = React.useState(false);
@@ -89,6 +93,7 @@ const handleDrawer = () =>{
 
 const pricesList = cartItems.reduce((sum,item) => sum+item.cartPrice,0)
 totalPrice(pricesList.toFixed(2))
+dispatch(increment(pricesList.toFixed(2)))
              
  const minus = (id)=> {
     cartItems.forEach(item =>{
@@ -99,17 +104,19 @@ totalPrice(pricesList.toFixed(2))
         });
    const minusList = [...cartItems]
    takeItems(minusList)
-   checkout()
+   
  }
  
  const checkout = () =>{
-   document.getElementById("tot").innerHTML=`total : ${cartItems.reduce((sum,item) => sum+item.cartPrice,0).toFixed(2)} $` ;
- }
+   //document.getElementById("tot").innerHTML=`total : ${cartItems.reduce((sum,item) => sum+item.cartPrice,0).toFixed(2)} $` ;
+    alert("thanks for your purchase!")
+    window.location.reload();
+  }
 
  const plus = (title) =>{
   return changuitoExpress(title)
   //document.getElementById("tot").innerHTML=`total : ${cartItems.reduce((sum,item) => sum+item.cartPrice,0).toFixed(2)} $`;
- }
+}
 
 const Cart = cartItems.length ?( 
     new Set(cartItems.map(item =>{
@@ -163,7 +170,7 @@ const Cart = cartItems.length ?(
         <Divider />
         <List>
           <ListItemText align="center"> 
-             <Typography id="tot" variant="h6">Total : $ </Typography>
+             <Typography id="tot" variant="h6">Total : {counter} $ </Typography>
           </ListItemText>
           <Button variant="contained" fullWidth={true} color="secondary" onClick={()=>{checkout()}}> checkout</Button>
         </List>

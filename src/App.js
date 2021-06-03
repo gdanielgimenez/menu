@@ -4,10 +4,17 @@ import styles from './App.module.css';
 import {Container, Typography, ThemeProvider, ListItemText} from '@material-ui/core';
 import Theme from './Theme';
 
+import { useSelector, useDispatch} from 'react-redux';
+import { increment } from './actions';
+
 
 const allCategories = ['all', ...new Set(Items.map((item)=>item.category))];
 
 function App() {
+  //redux state
+   const counter = useSelector(state => state);
+   const dispatch = useDispatch();
+  //---
   const [menuItems,setMenuItems] = useState(Items);
   const [categories, setCategories] = useState(allCategories);
   const [cartItems, setCartItems] = useState([])
@@ -56,7 +63,7 @@ function App() {
         it.qty+=1}
       })
       setCartItems(itemenu)
-      setTotal(itemenu[0].price)
+      dispatch(increment(itemenu[0].price))
   }
   //remove items from the cart when qty equals zero
   const takeItems  = (minusList) =>{
