@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Cart = ({  Items, cartItems, changuitoExpress,takeItems,total,totalPrice,settingSun }) =>{
+const Cart = ({ cartItems, changuitoExpress,takeItems,total,totalPrice,settingSun }) =>{
   const counter = useSelector(state=> state);
   const dispatch = useDispatch();
   //drawer-----------------------------------------------------------
@@ -91,10 +91,8 @@ const handleDrawer = () =>{
     setOpen(!open)
 }
 
-const pricesList = () => cartItems.reduce((sum,item) => sum+item.cartPrice,0)
-//totalPrice(pricesList())
-//dispatch(increment(pricesList().toFixed(2)))
-             
+//const pricesList = () => cartItems.reduce((sum,item) => sum+item.cartPrice,0)
+            
  const minus = (id)=> {
     cartItems.forEach(item =>{
         if(item.id === id){
@@ -109,15 +107,16 @@ const pricesList = () => cartItems.reduce((sum,item) => sum+item.cartPrice,0)
  
  const checkout = () =>{
    //document.getElementById("tot").innerHTML=`total : ${cartItems.reduce((sum,item) => sum+item.cartPrice,0).toFixed(2)} $` ;
-    alert("thanks for your purchase!")
-    window.location.reload();
-  }
-
- const plus = (title) =>{
-  return changuitoExpress(title),
-  //document.getElementById("tot").innerHTML=`total : ${cartItems.reduce((sum,item) => sum+item.cartPrice,0).toFixed(2)} $`;
-  dispatch(increment(pricesList()))
-}
+   if(cartItems.length == ' '){
+    alert("your cart is empty! please fill it!")
+   }else{
+    return alert("thanks for your purchase!"),
+        window.location.reload()
+    }
+   }
+     
+    
+    
 //---------------
 //-------------
 
