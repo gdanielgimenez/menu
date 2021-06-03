@@ -53,6 +53,7 @@ function App() {
                           });  
           });
         setCartItems(lista)
+        dispatch(increment(lista.reduce((sum,item) => sum+(item.price*item.qty),0).toFixed(2)))
   };
   
   //add items to cart when cart it is empty----
@@ -73,11 +74,16 @@ function App() {
   const totalPrice = (prices) =>{
    setTotal(prices)
   }
+  const settingSun = (list) =>{
+    setCartItems(list)
+    console.log(list)
+    dispatch(increment(list.reduce((sum,item) => sum+(item.price*item.qty),0).toFixed(2)))
+  }
   //----------------
   return (
     <ThemeProvider theme={Theme}>
     <Container>
-      <Cart total={total} totalPrice={totalPrice} items={menuItems} cartItems={cartItems} takeItems={takeItems} changuitoExpress={changuitoExpress}/>
+      <Cart settingSun={settingSun} total={total} totalPrice={totalPrice} Items={Items} cartItems={cartItems} takeItems={takeItems} changuitoExpress={changuitoExpress}/>
       <Typography align="center" variant="h2" className={styles.title}  color="primary"> Al's dinner menu</Typography>
       <Categories categories={categories} filterItems={filterItems}/>
       <Menu  totalPrice={totalPrice} items={menuItems} addToCart={addToCart}   changuitoExpress={changuitoExpress} cartItems={cartItems}/>

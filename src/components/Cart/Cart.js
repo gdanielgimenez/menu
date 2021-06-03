@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Cart = ({ cartItems, changuitoExpress,takeItems,total,totalPrice }) =>{
+const Cart = ({  Items, cartItems, changuitoExpress,takeItems,total,totalPrice,settingSun }) =>{
   const counter = useSelector(state=> state);
   const dispatch = useDispatch();
   //drawer-----------------------------------------------------------
@@ -91,9 +91,9 @@ const handleDrawer = () =>{
     setOpen(!open)
 }
 
-const pricesList = cartItems.reduce((sum,item) => sum+item.cartPrice,0)
-totalPrice(pricesList.toFixed(2))
-dispatch(increment(pricesList.toFixed(2)))
+const pricesList = () => cartItems.reduce((sum,item) => sum+item.cartPrice,0)
+//totalPrice(pricesList())
+//dispatch(increment(pricesList().toFixed(2)))
              
  const minus = (id)=> {
     cartItems.forEach(item =>{
@@ -104,7 +104,7 @@ dispatch(increment(pricesList.toFixed(2)))
         });
    const minusList = [...cartItems]
    takeItems(minusList)
-   
+   dispatch(increment(minusList.reduce((sum,item) => sum+(item.price*item.qty),0).toFixed(2)))
  }
  
  const checkout = () =>{
@@ -114,9 +114,12 @@ dispatch(increment(pricesList.toFixed(2)))
   }
 
  const plus = (title) =>{
-  return changuitoExpress(title)
+  return changuitoExpress(title),
   //document.getElementById("tot").innerHTML=`total : ${cartItems.reduce((sum,item) => sum+item.cartPrice,0).toFixed(2)} $`;
+  dispatch(increment(pricesList()))
 }
+//---------------
+//-------------
 
 const Cart = cartItems.length ?( 
     new Set(cartItems.map(item =>{
@@ -126,7 +129,7 @@ const Cart = cartItems.length ?(
                   <ListItemText align="left" > <Typography variant="caption">{item.title}</Typography> </ListItemText>
                   <IconButton fontSize="small" onClick={()=>minus(item.id)}> <RemoveCircleOutlineRoundedIcon /> </IconButton>
                     <Typography> {item.qty} </Typography>
-                  <IconButton fontSize="small"  onClick={()=>plus(item.title) }>< AddCircleOutlineRoundedIcon /></IconButton>
+                  <IconButton fontSize="small"  onClick={()=>changuitoExpress(item.title) }>< AddCircleOutlineRoundedIcon /></IconButton>
                 </ListItem>
                 <ListItem> 
                   <ListItemText align="right"> <Typography color="primary" variant="body2"> { (item.cartPrice = item.price*item.qty).toFixed(2)} $ </Typography> </ListItemText>
