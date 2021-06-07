@@ -15,10 +15,10 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-
-
 import { useSelector, useDispatch} from 'react-redux';
 import { increment } from '../../actions';
+
+
 
 const drawerWidth = 240;
 
@@ -114,7 +114,7 @@ const handleDrawer = () =>{
         window.location.reload()
     }
    }
-     
+const itmsTot =   cartItems.reduce((sum,item) => sum+ item.qty,0);
     
     
 //---------------
@@ -147,7 +147,9 @@ const Cart = cartItems.length ?(
         <AppBar className={styles.nav}>
           <Toolbar>
             <IconButton  className={styles.button} onClick={handleDrawer} >
-                <ShoppingCartRoundedIcon  fontSize="default"></ShoppingCartRoundedIcon>
+                <ShoppingCartRoundedIcon  fontSize="large">
+                </ShoppingCartRoundedIcon>
+                <Typography variant="h6" className={styles.items}>{itmsTot}</Typography>
             </IconButton>
             </Toolbar>
         </AppBar>
