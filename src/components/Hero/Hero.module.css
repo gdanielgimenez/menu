@@ -6,6 +6,7 @@
   justify-content: center;
   object-fit: contain;
   align-items: center;
+  margin-bottom: 110px !important;
 }
 .image {
   height: 100%;
@@ -62,6 +63,7 @@
     justify-content: center;
     object-fit: contain;
     align-items: center;
+    margin-bottom: 110px !important;
   }
   .image {
     height: 100%;
