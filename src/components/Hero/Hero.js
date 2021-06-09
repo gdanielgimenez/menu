@@ -9,7 +9,7 @@ const Hero = ({scrdwn}) =>{
         <div className={styles.heroContainer}>
             <img className={styles.image} src={food} alt="food" />
             <Typography variant="h1" className={styles.title}>Welcome to Al's dinner </Typography>
-            <Button onClick={scrdwn} className={styles.button} variant="outlined" size="large" > menu</Button>
+            <Button onClick={scrdwn } className={styles.button} variant="outlined" size="large" > menu</Button>
         </div>
     )
 }

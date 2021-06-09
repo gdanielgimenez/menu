@@ -80,19 +80,22 @@ function App() {
     dispatch(increment(list.reduce((sum,item) => sum+(item.price*item.qty),0).toFixed(2)))
   }
   const scrdwn = ()=>{
-    document.getElementById('middle').scrollIntoView({ block:"center"});
+    document.getElementById('cent').scrollIntoView({ alignToTop:true, block:"center"});
 
 }
   //----------------
   return (
     <ThemeProvider theme={Theme}>
-      <div id="middle">
+      <div  >
         <Cart settingSun={settingSun} total={total} totalPrice={totalPrice} Items={Items} cartItems={cartItems} takeItems={takeItems} changuitoExpress={changuitoExpress}/>
-          <Hero  scrdwn={scrdwn} />
-        <Container >
-          <Typography   align="center" variant="h2" className={styles.title}  color="primary"> Al's dinner menu</Typography>
-          <Categories categories={categories} filterItems={filterItems}/>
+          <Hero scrdwn={scrdwn} />
+        <Container>
+          <Typography id="middle"    align="center" variant="h2" className={styles.title}  color="primary"> Al's dinner menu</Typography>
+          <div id="cent">
+          <Categories  categories={categories} filterItems={filterItems}/>
+          </div>
           <Menu  totalPrice={totalPrice} items={menuItems} addToCart={addToCart}   changuitoExpress={changuitoExpress} cartItems={cartItems}/>
+          
         </Container>
      </div>
     </ThemeProvider>
