@@ -1,0 +1,26 @@
+.heroContainer {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  object-fit: contain;
+  align-items: center;
+}
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.title {
+  position: absolute;
+  color: snow;
+  top: 135px;
+  font-weight: 350 !important;
+}
+.button {
+  position: absolute !important;
+  top: 275px;
+  color: snow !important;
+  border-color: snow !important;
+}

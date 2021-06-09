@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import { Items, Menu,Categories,Cart } from './components';
+import { Items, Menu, Categories, Cart, Hero } from './components';
 import styles from './App.module.css';
-import {Container, Typography, ThemeProvider, ListItemText} from '@material-ui/core';
+import {Container, Typography, ThemeProvider} from '@material-ui/core';
 import Theme from './Theme';
 
 import { useSelector, useDispatch} from 'react-redux';
@@ -82,12 +82,15 @@ function App() {
   //----------------
   return (
     <ThemeProvider theme={Theme}>
-    <Container>
-      <Cart settingSun={settingSun} total={total} totalPrice={totalPrice} Items={Items} cartItems={cartItems} takeItems={takeItems} changuitoExpress={changuitoExpress}/>
-      <Typography align="center" variant="h2" className={styles.title}  color="primary"> Al's dinner menu</Typography>
-      <Categories categories={categories} filterItems={filterItems}/>
-      <Menu  totalPrice={totalPrice} items={menuItems} addToCart={addToCart}   changuitoExpress={changuitoExpress} cartItems={cartItems}/>
-    </Container>
+      <div>
+        <Cart settingSun={settingSun} total={total} totalPrice={totalPrice} Items={Items} cartItems={cartItems} takeItems={takeItems} changuitoExpress={changuitoExpress}/>
+          <Hero />
+          <Container>
+        <Typography align="center" variant="h2" className={styles.title}  color="primary"> Al's dinner menu</Typography>
+        <Categories categories={categories} filterItems={filterItems}/>
+        <Menu  totalPrice={totalPrice} items={menuItems} addToCart={addToCart}   changuitoExpress={changuitoExpress} cartItems={cartItems}/>
+      </Container>
+      </div>
     </ThemeProvider>
   );
 }
